@@ -20,17 +20,52 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ScrumEntry>) -> ()) {
         var entries: [ScrumEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        
+        var scrums: [DailyScrum]
+        
+        do {
+            let fileURL = try Self.fileURL()
+            guard let data = try? Data(contentsOf: fileURL!) else {
+                scrums = [DailyScrum(title: "Nil", attendees: [""], lengthInMinutes: 5, theme: .bubblegum)]
+                return
+            }
+            scrums = try JSONDecoder().decode([DailyScrum].self, from: data)
+        } catch {
+            scrums = [DailyScrum(title: "Nil", attendees: [""], lengthInMinutes: 5, theme: .bubblegum)]
+        }
+        
+        // 타임라인 생성
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = ScrumEntry(date: entryDate, scrums: DailyScrum.sampleData)
+        for minuteOffset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
+            let entry = ScrumEntry(date: entryDate, scrums: scrums)
             entries.append(entry)
         }
-
+        
+        // 타임라인을 반환
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
+    }
+    
+    private static func fileURL() throws -> URL? {
+//        try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//            .appendingPathComponent("scrums.data")
+        // App Group 식별자 설정
+        let appGroupIdentifier = "group.com.example.Scrumdinger"
+        
+        // FileManager를 통해 App Group 디렉토리 경로를 가져옴
+        guard let containerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier) else {
+            fatalError("Unable to access App Group container. Make sure the App Group is correctly configured.")
+        }
+            
+        let fileURL = containerURL.appendingPathComponent("scrums.json")
+            
+        // 파일이 존재하지 않는다면 생성
+        if !FileManager.default.fileExists(atPath: fileURL.path) {
+            FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
+        }
+
+        return fileURL
     }
 
 //    func relevances() async -> WidgetRelevances<Void> {

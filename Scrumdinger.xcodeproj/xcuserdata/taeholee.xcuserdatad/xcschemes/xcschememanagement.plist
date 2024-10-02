@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Scrumdinger 1.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>Scrumdinger.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>isShown</key>
@@ -19,6 +24,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>57723BDA2CAC325B001446FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>57E98D402CA2D50700DE5877</key>
 		<dict>
 			<key>primary</key>

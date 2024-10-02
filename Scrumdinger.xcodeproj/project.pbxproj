@@ -16,6 +16,7 @@
 		57723BEE2CAC3736001446FC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E98D532CA2DBD300DE5877 /* Theme.swift */; };
 		57723BEF2CAC3753001446FC /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AE30D2CA6BFE200CA8082 /* History.swift */; };
 		57723BF02CAC3C23001446FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57E98D482CA2D50800DE5877 /* Assets.xcassets */; };
+		57723BF12CAD4E6E001446FC /* ScrumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AE30F2CA6CAE900CA8082 /* ScrumStore.swift */; };
 		577AE2FE2CA5843D00CA8082 /* MeetingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AE2FD2CA5842E00CA8082 /* MeetingHeaderView.swift */; };
 		577AE3002CA5ADAE00CA8082 /* ScrumProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AE2FF2CA5ADAE00CA8082 /* ScrumProgressViewStyle.swift */; };
 		577AE3022CA5AE8E00CA8082 /* ScrumTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577AE3012CA5AE8E00CA8082 /* ScrumTimer.swift */; };
@@ -74,6 +75,8 @@
 		57355C0C2CAC2BFC00F066CB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		57355C0E2CAC2BFC00F066CB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		57723BDB2CAC325B001446FC /* ScrumdingerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScrumdingerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		57723BF22CAD8F53001446FC /* Scrumdinger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Scrumdinger.entitlements; sourceTree = "<group>"; };
+		57723BF32CAD8FBE001446FC /* ScrumdingerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScrumdingerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		577AE2FD2CA5842E00CA8082 /* MeetingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingHeaderView.swift; sourceTree = "<group>"; };
 		577AE2FF2CA5ADAE00CA8082 /* ScrumProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumProgressViewStyle.swift; sourceTree = "<group>"; };
 		577AE3012CA5AE8E00CA8082 /* ScrumTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumTimer.swift; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 				577AE3032CA5C2C100CA8082 /* MeetingFooterView.swift */,
 				577AE3152CA867FE00CA8082 /* MeetingTimerView.swift */,
 				577AE3132CA84EAE00CA8082 /* ErrorView.swift */,
+				577AE2FF2CA5ADAE00CA8082 /* ScrumProgressViewStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +180,7 @@
 		57E98D382CA2D50700DE5877 = {
 			isa = PBXGroup;
 			children = (
+				57723BF32CAD8FBE001446FC /* ScrumdingerWidgetExtension.entitlements */,
 				57E98D432CA2D50700DE5877 /* Scrumdinger */,
 				57723BDE2CAC325B001446FC /* ScrumdingerWidget */,
 				57355C0B2CAC2BFC00F066CB /* Frameworks */,
@@ -195,10 +200,10 @@
 		57E98D432CA2D50700DE5877 /* Scrumdinger */ = {
 			isa = PBXGroup;
 			children = (
+				57723BF22CAD8F53001446FC /* Scrumdinger.entitlements */,
 				577AE3172CA86A5800CA8082 /* Views */,
 				577AE30B2CA6BCD900CA8082 /* NewScrumSheet.swift */,
 				577AE3082CA5C98800CA8082 /* Resources */,
-				577AE2FF2CA5ADAE00CA8082 /* ScrumProgressViewStyle.swift */,
 				57D0A90B2CA48F010091F41B /* ThemePicker.swift */,
 				57E98D442CA2D50700DE5877 /* ScrumdingerApp.swift */,
 				57E98D592CA31C1C00DE5877 /* TrailingIconLabelStyle.swift */,
@@ -341,6 +346,7 @@
 			files = (
 				57723BEE2CAC3736001446FC /* Theme.swift in Sources */,
 				57723BED2CAC370F001446FC /* DailyScrum.swift in Sources */,
+				57723BF12CAD4E6E001446FC /* ScrumStore.swift in Sources */,
 				57723BEF2CAC3753001446FC /* History.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,8 +400,10 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ScrumdingerWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W6P6S5K553;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -426,8 +434,10 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = ScrumdingerWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W6P6S5K553;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -570,9 +580,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scrumdinger/Scrumdinger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrumdinger/Preview Content\"";
+				DEVELOPMENT_TEAM = W6P6S5K553;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded th transcribe the meeting. Audio recordings are discared after transcription";
@@ -600,9 +612,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scrumdinger/Scrumdinger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Scrumdinger/Preview Content\"";
+				DEVELOPMENT_TEAM = W6P6S5K553;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded th transcribe the meeting. Audio recordings are discared after transcription";
