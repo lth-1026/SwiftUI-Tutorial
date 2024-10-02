@@ -19,7 +19,7 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ScrumEntry>) -> ()) {
-        var entries: [ScrumEntry] = []
+//        var entries: [ScrumEntry] = []
         
         var scrums: [DailyScrum]
         
@@ -36,14 +36,11 @@ struct Provider: TimelineProvider {
         
         // 타임라인 생성
         let currentDate = Date()
-        for minuteOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .minute, value: minuteOffset, to: currentDate)!
-            let entry = ScrumEntry(date: entryDate, scrums: scrums)
-            entries.append(entry)
-        }
+        let entryDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)!
+        let entry = ScrumEntry(date: currentDate, scrums: scrums)
         
         // 타임라인을 반환
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: [entry], policy: .after(entryDate))
         completion(timeline)
     }
     

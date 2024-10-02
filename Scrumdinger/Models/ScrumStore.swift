@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import WidgetKit
 
 @MainActor
 class ScrumStore: ObservableObject {
@@ -53,5 +54,7 @@ class ScrumStore: ObservableObject {
             try data.write(to: outfile!)
         }
         _ = try await task.value
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 }
